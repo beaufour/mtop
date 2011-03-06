@@ -34,7 +34,7 @@ def main():
     (options, _) = parser.parse_args()
 
     try:
-        connection = Connection(options.server, slave_okey=True)
+        connection = Connection(options.server, slave_okay=True)
     except AutoReconnect, ex:
         print 'Connection to %s failed: %s' % (options.server, str(ex))
         return -1
