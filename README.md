@@ -1,10 +1,7 @@
-mtop
-====
-
 Introduction
 ------------
 
-`mtop` is a 'top' like tool for [MongoDB](http://www.mongodb.org/).
+`mtop` is a `top` like tool for [MongoDB](http://www.mongodb.org/).
 
 
 Usage
@@ -32,7 +29,3 @@ To Do
 
 * on slaves, show replication status
 * nifty colors
-
-License
--------
-[LGPL](http://www.gnu.org/licenses/lgpl.html)
