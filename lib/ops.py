@@ -1,4 +1,6 @@
 from pymongo.errors import AutoReconnect
+from pymongo.son import SON
+
 
 class MongoOps():
     """
@@ -28,7 +30,7 @@ class MongoOps():
     def get_server_status(self):
         ret = None
         try:
-            ret = self._connection.db.command({'serverStatus': 1})
+            ret = self._connection.db.command(SON([('serverStatus', 1), ('repl', 2)]))
         except AutoReconnect:
             pass
 

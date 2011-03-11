@@ -60,6 +60,7 @@ class Runner:
             if srvstat:
                 self._server_stats(srvstat)
                 self._memory_stats(srvstat)
+                self._repl_stats(srvstat)
                 self._op_stats(srvstat)
 
             if inprog:
@@ -90,6 +91,22 @@ class Runner:
 
     def _memory_stats(self, d):
         self._print(['Mem: %s resident, %s virtual, %s mapped' % (d['mem']['resident'], d['mem']['virtual'], d['mem']['mapped'])])
+
+
+    def _repl_stats(self, d):
+        repl = d.get('repl')
+        if not repl or repl['ismaster'] != 0:
+            return
+
+        sources = repl.get('sources')
+        if not sources:
+            return
+
+        out = []
+        out.append('Rep:')
+        for source in sources:
+            out.append(' %s: %ds' % (source['host'], source['lagSeconds']))
+        self._print(out)
 
 
     def _op_stats(self, d):
