@@ -1,5 +1,5 @@
 from pymongo.errors import AutoReconnect
-from pymongo.son import SON
+from bson.son import SON
 
 
 class MongoOps():
