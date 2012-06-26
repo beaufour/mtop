@@ -18,7 +18,7 @@ class Runner:
         """
 
         self._connection = connection
-        self._timeout = interval / 1000
+        self._timeout = interval / 1000.
         self._mongo_ops = MongoOps(self._connection)
 
 
