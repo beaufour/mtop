@@ -1,5 +1,9 @@
 from pymongo.errors import AutoReconnect
-from pymongo.son import SON
+try:
+    from bson.son import SON
+except ImportError:
+    # fall back to old location
+    from pymongo.son import SON
 
 
 class MongoOps():
