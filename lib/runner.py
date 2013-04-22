@@ -88,7 +88,12 @@ class Runner:
         self._print(out)
 
     def _memory_stats(self, d):
-        self._print(['Mem: %s resident, %s virtual, %s mapped' % (d['mem']['resident'], d['mem']['virtual'], d['mem']['mapped'])])
+        out = []
+        out.append('Mem (MB): %s resident, %s virtual, %s mapped' % (d['mem']['resident'], d['mem']['virtual'], d['mem']['mapped']))
+        if 'workingSet' in d:
+            # value is in pages (i.e. 4k blocks), so divide it by / 256 to get MB
+            out.append(', %d working set' % (round(int(d['workingSet']['pagesInMemory']) / 256.0)))
+        self._print(out)
 
     def _repl_stats(self, d):
         repl = d.get('repl')

@@ -32,7 +32,10 @@ class MongoOps():
     def get_server_status(self):
         ret = None
         try:
-            ret = self._connection.db.command(SON([('serverStatus', 1), ('repl', 2)]))
+            ret = self._connection.db.command(SON([('serverStatus', 1),
+                                                   ('repl', 2),
+                                                   ['workingSet', 1],
+                                                   ]))
         except AutoReconnect:
             pass
 
