@@ -20,7 +20,6 @@ class MongoOps():
 
         self._connection = connection
 
-    
     def get_inprog(self):
         ret = None
         try:
@@ -29,7 +28,6 @@ class MongoOps():
             pass
 
         return ret['inprog'] if ret else []
-
 
     def get_server_status(self):
         ret = None

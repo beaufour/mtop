@@ -22,6 +22,7 @@ from pymongo.errors import AutoReconnect
 
 from lib.runner import Runner
 
+
 def main():
     parser = OptionParser(usage='mtop.py [options]\nSee also: https://github.com/beaufour/mtop')
     parser.add_option('-s', '--server',
