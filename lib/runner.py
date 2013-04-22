@@ -21,7 +21,6 @@ class Runner:
         self._timeout = interval / 1000.
         self._mongo_ops = MongoOps(self._connection)
 
-
     def run(self):
         """
         Run loop.
@@ -39,7 +38,6 @@ class Runner:
             self._screen.end()
 
         return 0
-
 
     def _do_run(self):
         self._screen.timeout(self._timeout)
@@ -71,14 +69,12 @@ class Runner:
             # In the event of a resize
             self._maxy, self._maxx = self._screen.getmaxyx()
 
-
     def _print(self, arr):
         try:
             self._screen.addstr(self._y, 0, ''.join(arr)[:self._maxx])
             self._y += 1
         except:
             pass
-
 
     def _server_stats(self, d):
         host = self._connection.host
@@ -88,10 +84,8 @@ class Runner:
         out.append('. Lock %%: %.2f' % round(float(d['globalLock']['ratio']), 2))
         self._print(out)
 
-
     def _memory_stats(self, d):
         self._print(['Mem: %s resident, %s virtual, %s mapped' % (d['mem']['resident'], d['mem']['virtual'], d['mem']['mapped'])])
-
 
     def _repl_stats(self, d):
         repl = d.get('repl')
@@ -107,7 +101,6 @@ class Runner:
         for source in sources:
             out.append(' %s: %ds' % (source['host'], source['lagSeconds']))
         self._print(out)
-
 
     def _op_stats(self, d):
         out = []
@@ -125,7 +118,6 @@ class Runner:
         ops.insert(0, ' %4d total' % total)
         out.append(','.join(ops))
         self._print(out)
-
 
     def _inprog(self, inprog):
         template = "%11s %21s %7s %1s %5s %s"
