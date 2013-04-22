@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Copyright 2011 Allan Beaufour
+# Copyright 2011-2013 Allan Beaufour
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
