@@ -87,7 +87,7 @@ class Runner:
         out.append('. Conns: %d/%d' % (d['connections']['current'], d['connections']['available']))
         out.append('. Lock %%: %.2f' % round(float(d['globalLock']['ratio']), 2))
         self._print(out)
-        
+
 
     def _memory_stats(self, d):
         self._print(['Mem: %s resident, %s virtual, %s mapped' % (d['mem']['resident'], d['mem']['virtual'], d['mem']['mapped'])])
