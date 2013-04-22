@@ -17,7 +17,7 @@
 from optparse import OptionParser
 import sys
 
-from pymongo.connection import Connection
+import pymongo
 from pymongo.errors import AutoReconnect
 
 from lib.runner import Runner
@@ -35,7 +35,14 @@ def main():
     (options, _) = parser.parse_args()
 
     try:
-        connection = Connection(options.server, slave_okay=True)
+        if hasattr(pymongo, 'version_tuple') and pymongo.version_tuple[0] >= 2 and pymongo.version_tuple[1] >= 4:
+            from pymongo import MongoClient
+            from pymongo.read_preferences import ReadPreference
+            connection = MongoClient(host=options.server,
+                                     read_preference=ReadPreference.SECONDARY)
+        else:
+            from pymongo.connection import Connection
+            connection = Connection(options.server, slave_okay=True)
     except AutoReconnect, ex:
         print 'Connection to %s failed: %s' % (options.server, str(ex))
         return -1
