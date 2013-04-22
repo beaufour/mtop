@@ -92,17 +92,17 @@ class Runner:
 
     def _repl_stats(self, d):
         repl = d.get('repl')
-        if not repl or repl['ismaster'] != 0:
+        if not repl:
             return
 
-        sources = repl.get('sources')
-        if not sources:
+        hosts = repl.get('hosts')
+        if not hosts:
             return
 
         out = []
-        out.append('Rep:')
-        for source in sources:
-            out.append(' %s: %ds' % (source['host'], source['lagSeconds']))
+        out.append('Rep (%s):' % repl['setName'])
+        for host in hosts:
+            out.append(' %s(%s)' % (host, 'P' if host == repl['primary'] else 'S'))
         self._print(out)
 
     def _op_stats(self, d):
