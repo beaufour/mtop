@@ -81,7 +81,10 @@ class Runner:
         out = []
         out.append("%s. v%s, %d bit" % (host, d['version'], d['mem']['bits']))
         out.append('. Conns: %d/%d' % (d['connections']['current'], d['connections']['available']))
-        out.append('. Lock %%: %.2f' % round(float(d['globalLock']['ratio']), 2))
+        ratio = d['globalLock'].get('ratio')
+        if ratio is None:
+            ratio = float(d['globalLock']['lockTime']) / float(d['globalLock']['totalTime'])
+        out.append('. Lock %%: %.2f' % round(ratio, 2))
         self._print(out)
 
     def _memory_stats(self, d):
