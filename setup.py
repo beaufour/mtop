@@ -3,7 +3,7 @@
 from setuptools import setup
 setup(
     name='mtop',
-    version='0.1',
+    version='0.2',
     url='https://github.com/beaufour/mtop',
     author='Allan Beaufour',
     description='mtop is a top like tool for MongoDB.',
