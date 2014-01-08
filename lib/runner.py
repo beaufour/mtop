@@ -1,8 +1,9 @@
 import time
+import json
 
 from lib.ops import MongoOps
 from lib.screen import Screen
-from lib.util import op_cmp
+from lib.util import op_cmp, stringify_query
 
 
 class Runner:
@@ -129,7 +130,7 @@ class Runner:
 
     def _inprog(self, inprog):
         template = "%11s %21s %7s %1s %5s %s"
-        self._print([template % ('ID', 'CLIENT', 'OP', 'A', 'LOCKW', 'NS')])
+        self._print([template % ('ID', 'CLIENT', 'OP', 'A', 'LOCKW', 'NS / QUERY')])
 
         opsmax = self._maxy - self._y
         if len(inprog) > opsmax:
@@ -139,7 +140,13 @@ class Runner:
         for op in inprog[:opsmax]:
             a = 'T' if op['active'] else 'F'
             lock = op.get('lockType') if op['waitingForLock'] else ''
-            self._print([template % (op['opid'], op['client'], op['op'], a, lock, op['ns'])])
+            msg = op['ns']
+            if not msg:
+                msg = op['desc']
+            query = op.get('query')
+            if query:
+                msg += " " + json.dumps(stringify_query(query))[:(self._maxx-40)]
+            self._print([template % (op['opid'], op.get('client', 'internal'), op['op'], a, lock, msg)])
 
         if len(inprog) > opsmax:
             self._print(['( ... %d more ... )' % (len(inprog) - opsmax)])
