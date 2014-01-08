@@ -139,7 +139,8 @@ class Runner:
         for op in inprog[:opsmax]:
             a = 'T' if op['active'] else 'F'
             lock = op.get('lockType') if op['waitingForLock'] else ''
-            self._print([template % (op['opid'], op['client'], op['op'], a, lock, op['ns'])])
+            client = op.get('client', 'internal')
+            self._print([template % (op['opid'], client, op['op'], a, lock, op['ns'])])
 
         if len(inprog) > opsmax:
             self._print(['( ... %d more ... )' % (len(inprog) - opsmax)])
