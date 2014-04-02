@@ -6,6 +6,7 @@ setup(
     version='0.3',
     url='https://github.com/beaufour/mtop',
     author='Allan Beaufour',
+    author_email='allan@beaufour.dk',
     description='mtop is a top like tool for MongoDB.',
     zip_safe=False,
     install_requires=[
