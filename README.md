@@ -7,6 +7,10 @@ Introduction
 Installation
 ------------
 
+    > pip install mtop
+
+or alternatively
+
     > easy_install mtop
 
 Usage
