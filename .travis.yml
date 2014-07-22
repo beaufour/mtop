@@ -6,3 +6,4 @@ services:
   - mongodb
 install:
   - "pip install ."
+script: python setup.py test

@@ -13,6 +13,7 @@ setup(
     install_requires=[
         'pymongo'
     ],
+    test_suite = "tests.get_tests",
     entry_points = {
         'console_scripts': [
             'mtop = mtop.main:main'
