@@ -4,6 +4,11 @@ Introduction
 `mtop` is a `top` like tool for [MongoDB](http://www.mongodb.org/).
 
 
+Installation
+------------
+
+    > easy_install mtop
+
 Usage
 -----
 
