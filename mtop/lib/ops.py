@@ -6,7 +6,7 @@ except ImportError:
     from pymongo.son import SON
 
 
-class MongoOps():
+class MongoOps(object):
     """
     Helper class for mongo commands we use.
 

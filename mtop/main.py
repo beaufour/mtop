@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2011-2013 Allan Beaufour
+# Copyright 2011-2014 Allan Beaufour
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import sys
 import pymongo
 from pymongo.errors import AutoReconnect
 
-from lib.runner import Runner
+from mtop.lib.runner import Runner
 
 
 def main():

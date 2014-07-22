@@ -1,13 +1,13 @@
 import json
 import time
 
-from lib.ops import MongoOps
-from lib.screen import Screen
-from lib.util import op_cmp
-from lib.util import stringify_query_dict
+from mtop.lib.ops import MongoOps
+from mtop.lib.screen import Screen
+from mtop.lib.util import op_cmp
+from mtop.lib.util import stringify_query_dict
 
 
-class Runner:
+class Runner(object):
     """
     Main logic for 'mtop'. Once initialized, L{run()} keeps updating
     until ctrl-c is pressed.

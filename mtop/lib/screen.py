@@ -6,7 +6,7 @@ import struct
 import termios
 
 
-class Screen:
+class Screen(object):
     """
     Class that behaves like `curses`.
 
