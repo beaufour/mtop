@@ -1,7 +1,7 @@
 import os.path
-import unittest
+import unittest2
 
 
 def get_tests():
     start_dir = os.path.dirname(__file__)
-    return unittest.TestLoader().discover(start_dir, pattern="*.py")
+    return unittest2.TestLoader().discover(start_dir, pattern="*.py")
