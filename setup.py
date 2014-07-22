@@ -5,7 +5,7 @@ tests_require = ["unittest2"]
 
 setup(
     name='mtop',
-    version='0.4',
+    version='0.5',
     url='https://github.com/beaufour/mtop',
     author='Allan Beaufour',
     author_email='allan@beaufour.dk',
