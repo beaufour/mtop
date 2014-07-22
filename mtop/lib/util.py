@@ -1,8 +1,27 @@
+import pymongo
+from pymongo.errors import AutoReconnect
+
 try:
     from bson.binary import Binary
 except ImportError:
     # fall back to old location
     from pymongo.binary import Binary
+
+
+def get_connection(server):
+    try:
+        # New pymongo
+        if hasattr(pymongo, 'version_tuple') and pymongo.version_tuple[0] >= 2 and pymongo.version_tuple[1] >= 4:
+            from pymongo import MongoClient
+            from pymongo.read_preferences import ReadPreference
+            return MongoClient(host=server, read_preference=ReadPreference.SECONDARY)
+
+        # Old pymongo
+        from pymongo.connection import Connection
+        return Connection(server, slave_okay=True)
+
+    except AutoReconnect, ex:
+        return None
 
 
 def op_cmp(op1, op2):
