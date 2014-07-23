@@ -35,7 +35,7 @@ def main():
 
     connection = get_connection(options.server)
     if not connection:
-        print 'Connection to %s failed: %s' % (options.server, str(ex))
+        print 'Connection to %s failed' % (options.server)
         return -1
     runner = Runner(connection, options.delay)
 

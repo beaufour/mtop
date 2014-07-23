@@ -20,7 +20,7 @@ def get_connection(server):
         from pymongo.connection import Connection
         return Connection(server, slave_okay=True)
 
-    except AutoReconnect, ex:
+    except AutoReconnect:
         return None
 
 
