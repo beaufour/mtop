@@ -32,7 +32,6 @@ def main():
 
     (options, _) = parser.parse_args()
 
-
     connection = get_connection(options.server)
     if not connection:
         print 'Connection to %s failed' % (options.server)
