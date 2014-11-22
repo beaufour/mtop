@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='mtop',
-    version='0.5',
+    version='0.6',
     url='https://github.com/beaufour/mtop',
     author='Allan Beaufour',
     author_email='allan@beaufour.dk',
