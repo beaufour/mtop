@@ -26,14 +26,21 @@ def get_connection(server):
         return None
 
 
-def op_cmp(op1, op2):
+def op_key(op):
     """
-    Compare an operation by active and then opid.
+    Returns a sort key that sorts by by active and then opid.
     """
-    if op1['active'] != op2['active']:
-        return -1 if op1['active'] else 1
+    return '{0}{1}'.format('a' if op['active'] else 'i', op['opid'])
 
-    return cmp(op1['opid'], op2['opid'])
+
+def is_string(value):
+    """
+    Test whether the value is a string, working on both Python 2 and 3.
+    """
+    try:
+        return isinstance(value, basestring)
+    except NameError:
+        return isinstance(value, str)
 
 
 def stringify_query_dict(query):
@@ -42,7 +49,7 @@ def stringify_query_dict(query):
             query[k] = stringify_query_dict(v)
         elif isinstance(v, Binary):
             query[k] = "bin:" + hex(v)
-        elif isinstance(v, basestring):
+        elif is_string(v, str):
             pass
         else:
             query[k] = str(v)

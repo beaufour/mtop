@@ -3,7 +3,7 @@ import time
 
 from mtop.lib.ops import MongoOps
 from mtop.lib.screen import Screen
-from mtop.lib.util import op_cmp
+from mtop.lib.util import op_key
 from mtop.lib.util import stringify_query_dict
 
 
@@ -54,7 +54,7 @@ class Runner(object):
 
             srvstat = self._mongo_ops.get_server_status()
             inprog = self._mongo_ops.get_inprog()
-            inprog.sort(op_cmp)
+            inprog.sort(key=op_key)
 
             self._screen.clear()
             if srvstat:
