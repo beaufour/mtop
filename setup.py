@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-tests_require = ["unittest2"]
-
 setup(
     name='mtop',
     version='0.5',
@@ -16,7 +14,10 @@ setup(
         'pymongo'
     ],
     test_suite = "tests.get_tests",
-    tests_require = tests_require,
+    tests_require = [
+          'unittest2==0.8.0',
+          'attrdict==0.5.1',
+    ],
     entry_points = {
         'console_scripts': [
             'mtop = mtop.main:main'
