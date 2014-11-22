@@ -1,3 +1,4 @@
-*.pyc
 *.egg
+*.pyc
+/dist
 /mtop.egg-info
