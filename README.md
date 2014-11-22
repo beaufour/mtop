@@ -3,7 +3,7 @@ Introduction
 
 `mtop` is a `top` like tool for [MongoDB](http://www.mongodb.org/).
 
-[![Build Status](https://travis-ci.org/beaufour/mtop.svg?branch=add_tests)](https://travis-ci.org/beaufour/mtop)
+[![Build Status](https://travis-ci.org/beaufour/mtop.svg)](https://travis-ci.org/beaufour/mtop)
 
 Installation
 ------------
