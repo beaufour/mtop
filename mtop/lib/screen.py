@@ -1,3 +1,4 @@
+from __future__ import print_function
 import fcntl
 import os
 import signal
@@ -23,17 +24,17 @@ class Screen(object):
         pass
 
     def end(self):
-        print '\x1b[5l'
+        print('\x1b[5l')
 
     def timeout(self, timeout):
         self._timeout = timeout / 1000
 
     def clear(self):
-        print '\x1b[H\x1b[J',
+        print('\x1b[H\x1b[J',)
         sys.stdout.flush()
 
     def addstr(self, y, x, txt):
-        print '\x1b[%d;%dH%s' % (y + 1, x, txt),
+        print( '\x1b[%d;%dH%s' % (y + 1, x, txt),)
         sys.stdout.flush()
 
     def getmaxyx(self):

@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
 from optparse import OptionParser
 import sys
 
@@ -34,14 +35,14 @@ def main():
 
     connection = get_connection(options.server)
     if not connection:
-        print 'Connection to %s failed' % (options.server)
+        print('Connection to %s failed' % (options.server))
         return -1
     runner = Runner(connection, options.delay)
 
     rc = runner.run()
 
     if rc == -3:
-        print 'Screen size too small'
+        print('Screen size too small')
 
     return rc
 
