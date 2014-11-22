@@ -11,7 +11,9 @@ except ImportError:
 def get_connection(server):
     try:
         # New pymongo
-        if hasattr(pymongo, 'version_tuple') and pymongo.version_tuple[0] >= 2 and pymongo.version_tuple[1] >= 4:
+        if (hasattr(pymongo, 'version_tuple') and
+                pymongo.version_tuple[0] >= 2 and
+                pymongo.version_tuple[1] >= 4):
             from pymongo import MongoClient
             from pymongo.read_preferences import ReadPreference
             return MongoClient(host=server, read_preference=ReadPreference.SECONDARY)

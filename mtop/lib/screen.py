@@ -34,7 +34,7 @@ class Screen(object):
         sys.stdout.flush()
 
     def addstr(self, y, x, txt):
-        print( '\x1b[%d;%dH%s' % (y + 1, x, txt),)
+        print('\x1b[%d;%dH%s' % (y + 1, x, txt),)
         sys.stdout.flush()
 
     def getmaxyx(self):
