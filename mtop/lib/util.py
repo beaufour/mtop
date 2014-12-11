@@ -49,7 +49,7 @@ def stringify_query_dict(query):
             query[k] = stringify_query_dict(v)
         elif isinstance(v, Binary):
             query[k] = "bin:" + hex(v)
-        elif is_string(v, str):
+        elif is_string(v):
             pass
         else:
             query[k] = str(v)
